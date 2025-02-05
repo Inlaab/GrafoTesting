@@ -1,13 +1,42 @@
-import sys
+import time
+from watchdog.observers import Observer
+from watchdog.events import FileSystemEventHandler
 import os
+import sys
 
 # Agregar la ruta del directorio principal del proyecto
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from grafo import Grafo
-from agente_ia import AgenteIA
 
-def main():
+class Watcher:
+    DIRECTORY_TO_WATCH = "kb"
+
+    def __init__(self):
+        self.observer = Observer()
+
+    def run(self):
+        event_handler = Handler()
+        self.observer.schedule(event_handler, self.DIRECTORY_TO_WATCH, recursive=True)
+        self.observer.start()
+        try:
+            while True:
+                time.sleep(5)
+        except KeyboardInterrupt:
+            self.observer.stop()
+        self.observer.join()
+
+class Handler(FileSystemEventHandler):
+    @staticmethod
+    def on_any_event(event):
+        if event.is_directory:
+            return None
+        elif event.event_type == 'modified':
+            # Aquí es donde actualizamos el grafo
+            print(f"Archivo modificado: {event.src_path}")
+            actualizar_grafo()
+
+def actualizar_grafo():
     grafo = Grafo()
     grafo.cargar_datos('kb/servicios_activos.json', 'Servicios')
     grafo.cargar_datos('kb/consultores_activos.json', 'Consultores')
@@ -26,7 +55,6 @@ def main():
 
     grafo.mostrar_grafo()
 
-    agente = AgenteIA(grafo)
-
-if __name__ == "__main__":
-    main()
+if __name__ == '__main__':
+    w = Watcher()
+    w.run()
