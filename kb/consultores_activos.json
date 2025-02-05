@@ -1,0 +1,6 @@
+{
+    "consultores": [
+        {"id": 1, "nombre": "Juan", "vinculacion": "Tiempo_Completo"},
+        {"id": 2, "nombre": "Ana", "vinculacion": "Medio_Tiempo"}
+    ]
+}

@@ -1,0 +1,6 @@
+{
+    "servicios": [
+        {"id": 1, "estado": "Pendiente"},
+        {"id": 2, "estado": "Asignado"}
+    ]
+}
