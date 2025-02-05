@@ -8,9 +8,15 @@ from grafo import Grafo
 from agente_ia import AgenteIA
 
 def main():
+    # Crear una instancia de la clase Grafo
     grafo = Grafo()
+    
+    # Mostrar la estructura del grafo (nodos y aristas)
     grafo.mostrar_grafo()
+    
+    # Crear una instancia del Agente IA y pasarle el grafo
     agente = AgenteIA(grafo)
 
 if __name__ == "__main__":
+    # Ejecutar la función principal si este archivo se ejecuta directamente
     main()
