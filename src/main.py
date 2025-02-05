@@ -1,6 +1,8 @@
 import sys
 import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+# Agregar la ruta del directorio principal del proyecto
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from grafo import Grafo
 from agente_ia import AgenteIA

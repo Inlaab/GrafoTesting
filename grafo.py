@@ -12,23 +12,24 @@ class Grafo:
 
     def agregar_arista(self, desde, hacia, tipo, peso, funciones):
         self.aristas.append({
-            "desde": desde,
-            "hacia": hacia,
-            "tipo": tipo,
-            "peso": peso,
-            "funciones": funciones
+            'desde': desde,
+            'hasta': hacia,
+            'tipo': tipo,
+            'peso': peso,
+            'funciones': funciones
         })
 
     def mostrar_grafo(self):
         print("Nodos:")
-        for tipo, datos in self.nodos.items():
-            print(f"{tipo}: {datos}")
-        print("\nAristas:")
+        for tipo, nodos in self.nodos.items():
+            print(f"{tipo}: {nodos}")
+        print("Aristas:")
         for arista in self.aristas:
             print(arista)
 
     def consultar_tarifa(self, departamento, municipio):
-        for tarifa in self.nodos.get('Tarifas', []):
+        tarifas = self.nodos.get('Tarifas', {}).get('tarifas', [])
+        for tarifa in tarifas:
             if tarifa['departamento'] == departamento and tarifa['municipio'] == municipio:
                 return tarifa['tarifa']
         return None
