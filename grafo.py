@@ -27,6 +27,12 @@ class Grafo:
         for arista in self.aristas:
             print(arista)
 
+    def consultar_tarifa(self, departamento, municipio):
+        for tarifa in self.nodos.get('Tarifas', []):
+            if tarifa['departamento'] == departamento and tarifa['municipio'] == municipio:
+                return tarifa['tarifa']
+        return None
+
 # Ejemplo de uso
 if __name__ == "__main__":
     grafo = Grafo()

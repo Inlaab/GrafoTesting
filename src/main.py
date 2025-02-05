@@ -1,4 +1,9 @@
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from grafo import Grafo
+from agente_ia import AgenteIA
 
 def main():
     grafo = Grafo()
@@ -18,6 +23,13 @@ def main():
     grafo.agregar_arista('Capacidad', 'Consultores', 'limite', 1.0, ['Validación'])
 
     grafo.mostrar_grafo()
+
+    agente = AgenteIA(grafo)
+
+    # Prueba de interacción
+    input_usuario = "¿Cuál es la tarifa para el municipio de Chía en Cundinamarca?"
+    respuesta = agente.procesar_input(input_usuario)
+    print(respuesta)
 
 if __name__ == "__main__":
     main()

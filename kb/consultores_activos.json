@@ -1,0 +1,12 @@
+[
+    {
+        "id": 1,
+        "nombre": "Consultor 1",
+        "especialidad": "Especialidad 1"
+    },
+    {
+        "id": 2,
+        "nombre": "Consultor 2",
+        "especialidad": "Especialidad 2"
+    }
+]
