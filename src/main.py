@@ -10,12 +10,7 @@ from agente_ia import AgenteIA
 def main():
     grafo = Grafo()
     grafo.mostrar_grafo()
- #   agente = AgenteIA(grafo)
+    agente = AgenteIA(grafo)
 
 if __name__ == "__main__":
     main()
-
-# Ejemplo de uso
-#if __name__ == "__main__":
-#   grafo = Grafo()
-#   grafo.mostrar_grafo()
