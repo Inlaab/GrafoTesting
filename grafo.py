@@ -4,11 +4,7 @@ class Grafo:
     def __init__(self):
         self.nodos = {}
         self.aristas = []
-
-#    def cargar_datos(self, archivo, tipo):
-#       with open(archivo, 'r') as f:
-#           datos = json.load(f)
-#           self.nodos[tipo] = datos
+        self.cargar_todos_los_datos()
 
     def cargar_datos(self, archivo, tipo):
         with open(archivo, 'r') as f:
@@ -22,6 +18,12 @@ class Grafo:
                     raise ValueError("Los datos existentes y los nuevos datos deben ser del mismo tipo (lista o diccionario).")
             else:
                 self.nodos[tipo] = datos
+
+    def cargar_aristas(self, aristas):
+        if isinstance(aristas, list):
+            self.aristas.extend(aristas)
+        else:
+            raise ValueError("Las aristas deben ser una lista.")
 
     def agregar_arista(self, desde, hasta, tipo, peso, funciones):
         self.aristas.append({
@@ -40,9 +42,21 @@ class Grafo:
         for arista in self.aristas:
             print(arista)
 
-    def consultar_tarifa(self, departamento, municipio):
-        tarifas = self.nodos.get('Tarifas', {}).get('tarifas', [])
-        for tarifa in tarifas:
-            if tarifa['departamento'] == departamento and tarifa['municipio'] == municipio:
-                return tarifa['tarifa']
-        return None
+    def cargar_todos_los_datos(self):
+        self.cargar_datos('kb/servicios_activos.json', 'Servicios')
+        self.cargar_datos('kb/consultores_activos.json', 'Consultores')
+        self.cargar_datos('kb/ubicaciones_geo.json', 'Ubicaciones')
+        self.cargar_datos('kb/franjas_horarias.json', 'Franjas_Horarias')
+        self.cargar_datos('kb/matriz_distancias.json', 'Distancias')
+        self.cargar_datos('kb/tarifas_servicios.json', 'Tarifas')
+        self.cargar_datos('kb/capacidad_operativa.json', 'Capacidad')
+
+        aristas = [
+            {'desde': 'Servicios', 'hasta': 'Consultores', 'tipo': 'asignacion', 'peso': 1.0, 'funciones': ['Procesamiento']},
+            {'desde': 'Consultores', 'hasta': 'Ubicaciones', 'tipo': 'localizacion', 'peso': 1.0, 'funciones': ['Consulta']},
+            {'desde': 'Ubicaciones', 'hasta': 'Distancias', 'tipo': 'calculo', 'peso': 1.0, 'funciones': ['Cálculo']},
+            {'desde': 'Franjas_Horarias', 'hasta': 'Consultores', 'tipo': 'disponibilidad', 'peso': 1.0, 'funciones': ['Validación']},
+            {'desde': 'Distancias', 'hasta': 'Tarifas', 'tipo': 'factor', 'peso': 1.0, 'funciones': ['Cálculo']},
+            {'desde': 'Capacidad', 'hasta': 'Consultores', 'tipo': 'limite', 'peso': 1.0, 'funciones': ['Validación']}
+        ]
+        self.cargar_aristas(aristas)
