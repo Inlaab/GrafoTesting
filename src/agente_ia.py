@@ -360,3 +360,19 @@ class AgenteIA:
         """
         consultor = self.grafo.nodos['Consultores'][consultor_id]
         return consultor['tipo']
+
+    # Instrucciones adicionales
+    def no_citar_fuentes(self):
+        """
+        Instrucción para no citar fuentes en las respuestas.
+        """
+        pass
+
+    def cambiar_mensaje_consulta(self, mensaje):
+        """
+        Cambiar "Voy a consultar" por "consultando información...".
+        
+        :param mensaje: Mensaje original.
+        :return: Mensaje modificado.
+        """
+        return mensaje.replace("Voy a consultar", "consultando información...")
