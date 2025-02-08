@@ -1,5 +1,68 @@
 {
     "capacidad": [
-        {"consultor_id": 1, "max_servicios": 6}
-    ]
+        {
+            "consultor_id": 1,
+            "tipo_contrato": {
+                "modalidad": "tiempo_completo",
+                "factor_capacidad": 1.0
+            },
+            "servicios_habilitados": {
+                "tipos_servicio": ["TIPO_1", "TIPO_2"],
+                "nivel_experiencia": 1
+            },
+            "limites_operativos": {
+                "base": {
+                    "ubicacion_id": "BASE_001",
+                    "radio_maximo_km": 30
+                },
+                "matriz_distancia": {
+                    "id_matriz": "MTZ_001",
+                    "factor_tiempo": 1.2
+                },
+                "capacidad_diaria": {
+                    "max_tiempo_desplazamiento_minutos": 180,
+                    "max_tiempo_ejecucion_minutos": 360
+                }
+            },
+            "tarifas": {
+                "id_tarifa": "TAR_001",
+                "factores_adicionales": {
+                    "distancia": 1.1,
+                    "urgencia": 1.2
+                }
+            },
+            "control_sobrecarga": {
+                "umbral_alerta": 0.85,
+                "factores_ajuste": {
+                    "trafico": 1.2,
+                    "clima": 1.15
+                }
+            },
+            "excepciones": {
+                "bloqueos_via": [],
+                "no_disponible": {
+                    "fecha_inicio": "",
+                    "fecha_fin": "",
+                    "motivo": ""
+                }
+            },
+            "estado": {
+                "activo": true,
+                "carga_actual": {
+                    "tiempo_desplazamiento": 0,
+                    "tiempo_ejecucion": 0,
+                    "servicios_asignados": 0
+                },
+                "ultima_actualizacion": "2024-01-20T10:00:00"
+            }
+        }
+    ],
+    "configuracion_global": {
+        "factor_optimizacion": 0.9,
+        "tiempo_actualizacion_minutos": 15,
+        "parametros_control": {
+            "max_intentos_reasignacion": 3,
+            "tolerancia_desviacion": 0.2
+        }
+    }
 }
