@@ -1,139 +1,477 @@
 {
-    "tarifas": [
-        {"departamento": "Cundinamarca", "municipio": "Bojacá", "tarifa": 102300},
-        {"departamento": "Cundinamarca", "municipio": "Cajicá", "tarifa": 99000},
-        {"departamento": "Cundinamarca", "municipio": "Cáqueza", "tarifa": 102300},
-        {"departamento": "Cundinamarca", "municipio": "Chía", "tarifa": 88000},
-        {"departamento": "Cundinamarca", "municipio": "Chipaque", "tarifa": 91300},
-        {"departamento": "Cundinamarca", "municipio": "Cota", "tarifa": 82500},
-        {"departamento": "Cundinamarca", "municipio": "El Rosal", "tarifa": 105600},
-        {"departamento": "Cundinamarca", "municipio": "Facatativá", "tarifa": 102300},
-        {"departamento": "Cundinamarca", "municipio": "Fómeque", "tarifa": 117700},
-        {"departamento": "Cundinamarca", "municipio": "Fosca", "tarifa": 130900},
-        {"departamento": "Cundinamarca", "municipio": "Funza", "tarifa": 86900},
-        {"departamento": "Cundinamarca", "municipio": "Guasca", "tarifa": 135300},
-        {"departamento": "Cundinamarca", "municipio": "Gutiérrez", "tarifa": 138600},
-        {"departamento": "Cundinamarca", "municipio": "La Calera", "tarifa": 91300},
-        {"departamento": "Cundinamarca", "municipio": "La Mesa", "tarifa": 126500},
-        {"departamento": "Cundinamarca", "municipio": "Madrid", "tarifa": 93500},
-        {"departamento": "Cundinamarca", "municipio": "Mosquera", "tarifa": 88000},
-        {"departamento": "Cundinamarca", "municipio": "Nimaima", "tarifa": 143000},
-        {"departamento": "Cundinamarca", "municipio": "Sibaté", "tarifa": 99000},
-        {"departamento": "Cundinamarca", "municipio": "Sopó", "tarifa": 103400},
-        {"departamento": "Cundinamarca", "municipio": "Subachoque", "tarifa": 108900},
-        {"departamento": "Cundinamarca", "municipio": "Tabio", "tarifa": 108900},
-        {"departamento": "Cundinamarca", "municipio": "Tena", "tarifa": 110000},
-        {"departamento": "Cundinamarca", "municipio": "Tenjo", "tarifa": 102300},
-        {"departamento": "Cundinamarca", "municipio": "Tibacuy", "tarifa": 157300},
-        {"departamento": "Cundinamarca", "municipio": "Tocaima", "tarifa": 107800},
-        {"departamento": "Cundinamarca", "municipio": "Tocancipá", "tarifa": 102300},
-        {"departamento": "Cundinamarca", "municipio": "Viotá", "tarifa": 126500},
-        {"departamento": "Cundinamarca", "municipio": "Zipacon", "tarifa": 108900},
-        {"departamento": "Cundinamarca", "municipio": "Zipaquirá", "tarifa": 102300},
-        {"departamento": "Cundinamarca", "municipio": "Bogotá", "tarifa": 70000},
-        {"departamento": "Cundinamarca", "municipio": "Soacha", "tarifa": 70000},
-        {"departamento": "Antioquia", "municipio": "Medellín", "tarifa": 70000},
-        {"departamento": "Antioquia", "municipio": "Angelópolis", "tarifa": 108900},
-        {"departamento": "Antioquia", "municipio": "Armenia", "tarifa": 114400},
-        {"departamento": "Antioquia", "municipio": "Barbosa", "tarifa": 115500},
-        {"departamento": "Antioquia", "municipio": "Bello", "tarifa": 70000},
-        {"departamento": "Antioquia", "municipio": "Caldas", "tarifa": 97900},
-        {"departamento": "Antioquia", "municipio": "Carmen de viboral", "tarifa": 145200},
-        {"departamento": "Antioquia", "municipio": "Copacabana", "tarifa": 91300},
-        {"departamento": "Antioquia", "municipio": "Ebejico", "tarifa": 114400},
-        {"departamento": "Antioquia", "municipio": "El Santuario", "tarifa": 145200},
-        {"departamento": "Antioquia", "municipio": "Envigado", "tarifa": 70000},
-        {"departamento": "Antioquia", "municipio": "Girardota", "tarifa": 99000},
-        {"departamento": "Antioquia", "municipio": "Guarne", "tarifa": 102300},
-        {"departamento": "Antioquia", "municipio": "Heliconia", "tarifa": 117000},
-        {"departamento": "Antioquia", "municipio": "Itaguí", "tarifa": 70000},
-        {"departamento": "Antioquia", "municipio": "La Estrella", "tarifa": 89100},
-        {"departamento": "Antioquia", "municipio": "Retiro", "tarifa": 102300},
-        {"departamento": "Antioquia", "municipio": "Rionegro", "tarifa": 145200},
-        {"departamento": "Antioquia", "municipio": "San Jerónimo", "tarifa": 108900},
-        {"departamento": "Antioquia", "municipio": "San Vicente", "tarifa": 112200},
-        {"departamento": "Atlántico", "municipio": "Barranquilla", "tarifa": 70000},
-        {"departamento": "Atlántico", "municipio": "Baranoa", "tarifa": 112200},
-        {"departamento": "Atlántico", "municipio": "Galapa", "tarifa": 88000},
-        {"departamento": "Atlántico", "municipio": "Malambo", "tarifa": 95700},
-        {"departamento": "Atlántico", "municipio": "Puerto Colombia", "tarifa": 94600},
-        {"departamento": "Atlántico", "municipio": "Santo Tomás", "tarifa": 114400},
-        {"departamento": "Atlántico", "municipio": "Soledad", "tarifa": 86900},
-        {"departamento": "Bolívar", "municipio": "Cartagena", "tarifa": 70000},
-        {"departamento": "Bolívar", "municipio": "Arjona", "tarifa": 127600},
-        {"departamento": "Bolívar", "municipio": "Santa Rosa", "tarifa": 108900},
-        {"departamento": "Bolívar", "municipio": "Turbaco", "tarifa": 108900},
-        {"departamento": "Boyacá", "municipio": "Tunja", "tarifa": 70000},
-        {"departamento": "Boyacá", "municipio": "Chíquiza", "tarifa": 101200},
-        {"departamento": "Boyacá", "municipio": "Duitama", "tarifa": 107800},
-        {"departamento": "Boyacá", "municipio": "Firavitoba", "tarifa": 121000},
-        {"departamento": "Boyacá", "municipio": "Jenesano", "tarifa": 104500},
-        {"departamento": "Boyacá", "municipio": "Monguí", "tarifa": 132000},
-        {"departamento": "Boyacá", "municipio": "Motavita", "tarifa": 84700},
-        {"departamento": "Boyacá", "municipio": "Nobsa", "tarifa": 110000},
-        {"departamento": "Boyacá", "municipio": "Nuevo Colón", "tarifa": 115500},
-        {"departamento": "Boyacá", "municipio": "Paipa", "tarifa": 102300},
-        {"departamento": "Boyacá", "municipio": "Samacá", "tarifa": 101200},
-        {"departamento": "Boyacá", "municipio": "Sogamoso", "tarifa": 104500},
-        {"departamento": "Boyacá", "municipio": "Soracá", "tarifa": 88000},
-        {"departamento": "Boyacá", "municipio": "Tibasosa", "tarifa": 110000},
-        {"departamento": "Boyacá", "municipio": "Tuta", "tarifa": 132000},
-        {"departamento": "Boyacá", "municipio": "Villa De Leyva", "tarifa": 126500},
-        {"departamento": "Boyacá", "municipio": "Viracacha", "tarifa": 102300},
-        {"departamento": "Caldas", "municipio": "Manizales", "tarifa": 70000},
-        {"departamento": "Caldas", "municipio": "Palestina", "tarifa": 102300},
-        {"departamento": "Caldas", "municipio": "Villa Maria", "tarifa": 82500},
-        {"departamento": "Cesar", "municipio": "Valledupar", "tarifa": 70000},
-        {"departamento": "Cesar", "municipio": "San Diego", "tarifa": 104500},
-        {"departamento": "Córdoba", "municipio": "Montería", "tarifa": 70000},
-        {"departamento": "Córdoba", "municipio": "Cereté", "tarifa": 110000},
-        {"departamento": "Córdoba", "municipio": "Ciénaga De Oro", "tarifa": 117700},
-        {"departamento": "CundTol", "municipio": "Flandes", "tarifa": 70000},
-        {"departamento": "CundTol", "municipio": "Girardot", "tarifa": 70000},
-        {"departamento": "CundTol", "municipio": "Ibagué", "tarifa": 70000},
-        {"departamento": "CundTol", "municipio": "Agua De Dios", "tarifa": 103400},
-        {"departamento": "CundTol", "municipio": "Alvarado", "tarifa": 114400},
-        {"departamento": "CundTol", "municipio": "Apulo", "tarifa": 145200},
-        {"departamento": "CundTol", "municipio": "Carmen De Apicalá", "tarifa": 137500},
-        {"departamento": "CundTol", "municipio": "El Guamo", "tarifa": 106700},
-        {"departamento": "CundTol", "municipio": "Espinal", "tarifa": 107800},
-        {"departamento": "CundTol", "municipio": "Fusagasugá", "tarifa": 104500},
-        {"departamento": "CundTol", "municipio": "Líbano", "tarifa": 157300},
-        {"departamento": "CundTol", "municipio": "Mariquita", "tarifa": 159500},
-        {"departamento": "CundTol", "municipio": "Melgar", "tarifa": 106700},
-        {"departamento": "CundTol", "municipio": "Mesitas del Colegio", "tarifa": 156500},
-        {"departamento": "Magdalena", "municipio": "Santa Marta", "tarifa": 70000},
-        {"departamento": "Magdalena", "municipio": "Cienaga", "tarifa": 150700},
-        {"departamento": "Meta", "municipio": "Villavicencio", "tarifa": 70000},
-        {"departamento": "Meta", "municipio": "Acacias", "tarifa": 129800},
-        {"departamento": "Meta", "municipio": "Restrepo", "tarifa": 114400},
-        {"departamento": "Norte de Santander", "municipio": "Cucuta", "tarifa": 70000},
-        {"departamento": "Norte de Santander", "municipio": "El Zulia", "tarifa": 96800},
-        {"departamento": "Norte de Santander", "municipio": "Los Patios", "tarifa": 85800},
-        {"departamento": "Norte de Santander", "municipio": "San Cayetano", "tarifa": 91300},
-        {"departamento": "Norte de Santander", "municipio": "Villa Del Rosario", "tarifa": 88000},
-        {"departamento": "Quindío", "municipio": "Armenia QND", "tarifa": 70000},
-        {"departamento": "Quindío", "municipio": "Calarcá", "tarifa": 83600},
-        {"departamento": "Quindío", "municipio": "Circasia", "tarifa": 93500},
-        {"departamento": "Quindío", "municipio": "La Tebaida", "tarifa": 102300},
-        {"departamento": "Quindío", "municipio": "Montenegro", "tarifa": 99000},
-        {"departamento": "Quindío", "municipio": "Quimbaya", "tarifa": 97900},
-        {"departamento": "Quindío", "municipio": "Salento", "tarifa": 115500},
-        {"departamento": "Risaralda", "municipio": "Pereira", "tarifa": 70000},
-        {"departamento": "Risaralda", "municipio": "Dosquebradas", "tarifa": 82500},
-        {"departamento": "Risaralda", "municipio": "Marsella", "tarifa": 97900},
-        {"departamento": "Risaralda", "municipio": "Santa Rosa De Cabal", "tarifa": 93500},
-        {"departamento": "Santander", "municipio": "Bucaramanga", "tarifa": 70000},
-        {"departamento": "Santander", "municipio": "Floridablanca", "tarifa": 90200},
-        {"departamento": "Valle del Cauca", "municipio": "Cali", "tarifa": 70000},
-        {"departamento": "Valle del Cauca", "municipio": "Candelaria", "tarifa": 102300},
-        {"departamento": "Valle del Cauca", "municipio": "Florida", "tarifa": 129800},
-        {"departamento": "Valle del Cauca", "municipio": "Guadalajara De Buga", "tarifa": 165000},
-        {"departamento": "Valle del Cauca", "municipio": "Jamundí", "tarifa": 85800},
-        {"departamento": "Valle del Cauca", "municipio": "La Cumbre", "tarifa": 108900},
-        {"departamento": "Valle del Cauca", "municipio": "Palmira", "tarifa": 102300},
-        {"departamento": "Valle del Cauca", "municipio": "Pradera", "tarifa": 125400},
-        {"departamento": "Valle del Cauca", "municipio": "Yumbo", "tarifa": 101200},
-        {"departamento": "Visita Fallida", "municipio": "Toda la cobertura", "tarifa": 37400}
-    ]
+    "regiones": {
+        "Cundinamarca": {
+            "municipios": {
+                "Bojacá": {
+                    "tarifa": 102300
+                },
+                "Cajicá": {
+                    "tarifa": 99000
+                },
+                "Cáqueza": {
+                    "tarifa": 102300
+                },
+                "Chía": {
+                    "tarifa": 88000
+                },
+                "Chipaque": {
+                    "tarifa": 91300
+                },
+                "Cota": {
+                    "tarifa": 82500
+                },
+                "El Rosal": {
+                    "tarifa": 105600
+                },
+                "Facatativá": {
+                    "tarifa": 102300
+                },
+                "Fómeque": {
+                    "tarifa": 117700
+                },
+                "Fosca": {
+                    "tarifa": 130900
+                },
+                "Funza": {
+                    "tarifa": 86900
+                },
+                "Guasca": {
+                    "tarifa": 135300
+                },
+                "Gutiérrez": {
+                    "tarifa": 138600
+                },
+                "La Calera": {
+                    "tarifa": 91300
+                },
+                "La Mesa": {
+                    "tarifa": 126500
+                },
+                "Madrid": {
+                    "tarifa": 93500
+                },
+                "Mosquera": {
+                    "tarifa": 88000
+                },
+                "Nimaima": {
+                    "tarifa": 143000
+                },
+                "Sibaté": {
+                    "tarifa": 99000
+                },
+                "Sopó": {
+                    "tarifa": 103400
+                },
+                "Subachoque": {
+                    "tarifa": 108900
+                },
+                "Tabio": {
+                    "tarifa": 108900
+                },
+                "Tena": {
+                    "tarifa": 110000
+                },
+                "Tenjo": {
+                    "tarifa": 102300
+                },
+                "Tibacuy": {
+                    "tarifa": 157300
+                },
+                "Tocaima": {
+                    "tarifa": 107800
+                },
+                "Tocancipá": {
+                    "tarifa": 102300
+                },
+                "Viotá": {
+                    "tarifa": 126500
+                },
+                "Zipacón": {
+                    "tarifa": 108900
+                },
+                "Zipaquirá": {
+                    "tarifa": 102300
+                },
+                "Bogotá": {
+                    "tarifa": 70000
+                },
+                "Soacha": {
+                    "tarifa": 70000
+                }
+            }
+        },
+        "Antioquia": {
+            "municipios": {
+                "Medellín": {
+                    "tarifa": 70000
+                },
+                "Angelópolis": {
+                    "tarifa": 108900
+                },
+                "Armenia": {
+                    "tarifa": 114400
+                },
+                "Barbosa": {
+                    "tarifa": 115500
+                },
+                "Bello": {
+                    "tarifa": 70000
+                },
+                "Caldas": {
+                    "tarifa": 97900
+                },
+                "Carmen de viboral": {
+                    "tarifa": 145200
+                },
+                "Copacabana": {
+                    "tarifa": 91300
+                },
+                "Ebejico": {
+                    "tarifa": 114400
+                },
+                "El Santuario": {
+                    "tarifa": 145200
+                },
+                "Envigado": {
+                    "tarifa": 70000
+                },
+                "Girardota": {
+                    "tarifa": 99000
+                },
+                "Guarne": {
+                    "tarifa": 102300
+                },
+                "Heliconia": {
+                    "tarifa": 117000
+                },
+                "Itaguí": {
+                    "tarifa": 70000
+                },
+                "La Estrella": {
+                    "tarifa": 89100
+                },
+                "Retiro": {
+                    "tarifa": 102300
+                },
+                "Rionegro": {
+                    "tarifa": 145200
+                },
+                "San Jerónimo": {
+                    "tarifa": 108900
+                },
+                "San Vicente": {
+                    "tarifa": 112200
+                }
+            }
+        },
+        "Atlántico": {
+            "municipios": {
+                "Barranquilla": {
+                    "tarifa": 70000
+                },
+                "Baranoa": {
+                    "tarifa": 112200
+                },
+                "Galapa": {
+                    "tarifa": 88000
+                },
+                "Malambo": {
+                    "tarifa": 95700
+                },
+                "Puerto Colombia": {
+                    "tarifa": 94600
+                },
+                "Santo Tomás": {
+                    "tarifa": 114400
+                },
+                "Soledad": {
+                    "tarifa": 86900
+                }
+            }
+        },
+        "Bolívar": {
+            "municipios": {
+                "Cartagena": {
+                    "tarifa": 70000
+                },
+                "Arjona": {
+                    "tarifa": 127600
+                },
+                "Santa Rosa": {
+                    "tarifa": 108900
+                },
+                "Turbaco": {
+                    "tarifa": 108900
+                }
+            }
+        },
+        "Boyacá": {
+            "municipios": {
+                "Tunja": {
+                    "tarifa": 70000
+                },
+                "Chíquiza": {
+                    "tarifa": 101200
+                },
+                "Duitama": {
+                    "tarifa": 107800
+                },
+                "Firavitoba": {
+                    "tarifa": 121000
+                },
+                "Jenesano": {
+                    "tarifa": 104500
+                },
+                "Monguí": {
+                    "tarifa": 132000
+                },
+                "Motavita": {
+                    "tarifa": 84700
+                },
+                "Nobsa": {
+                    "tarifa": 110000
+                },
+                "Nuevo Colón": {
+                    "tarifa": 115500
+                },
+                "Paipa": {
+                    "tarifa": 102300
+                },
+                "Samacá": {
+                    "tarifa": 101200
+                },
+                "Sogamoso": {
+                    "tarifa": 104500
+                },
+                "Soracá": {
+                    "tarifa": 88000
+                },
+                "Tibasosa": {
+                    "tarifa": 110000
+                },
+                "Tuta": {
+                    "tarifa": 132000
+                },
+                "Villa De Leyva": {
+                    "tarifa": 126500
+                },
+                "Viracacha": {
+                    "tarifa": 102300
+                }
+            }
+        },
+        "Caldas": {
+            "municipios": {
+                "Manizales": {
+                    "tarifa": 70000
+                },
+                "Palestina": {
+                    "tarifa": 102300
+                },
+                "Villa Maria": {
+                    "tarifa": 82500
+                }
+            }
+        },
+        "Cesar": {
+            "municipios": {
+                "Valledupar": {
+                    "tarifa": 70000
+                },
+                "San Diego": {
+                    "tarifa": 104500
+                }
+            }
+        },
+        "Córdoba": {
+            "municipios": {
+                "Montería": {
+                    "tarifa": 70000
+                },
+                "Cereté": {
+                    "tarifa": 110000
+                },
+                "Ciénaga De Oro": {
+                    "tarifa": 117700
+                }
+            }
+        },
+        "CundTol": {
+            "municipios": {
+                "Flandes": {
+                    "tarifa": 70000
+                },
+                "Girardot": {
+                    "tarifa": 70000
+                },
+                "Ibagué": {
+                    "tarifa": 70000
+                },
+                "Agua De Dios": {
+                    "tarifa": 103400
+                },
+                "Alvarado": {
+                    "tarifa": 114400
+                },
+                "Apulo": {
+                    "tarifa": 145200
+                },
+                "Carmen De Apicalá": {
+                    "tarifa": 137500
+                },
+                "El Guamo": {
+                    "tarifa": 106700
+                },
+                "Espinal": {
+                    "tarifa": 107800
+                },
+                "Fusagasugá": {
+                    "tarifa": 104500
+                },
+                "Líbano": {
+                    "tarifa": 157300
+                },
+                "Mariquita": {
+                    "tarifa": 159500
+                },
+                "Melgar": {
+                    "tarifa": 106700
+                },
+                "Mesitas del Colegio": {
+                    "tarifa": 156500
+                }
+            }
+        },
+        "Magdalena": {
+            "municipios": {
+                "Santa Marta": {
+                    "tarifa": 70000
+                },
+                "Cienaga": {
+                    "tarifa": 150700
+                }
+            }
+        },
+        "Meta": {
+            "municipios": {
+                "Villavicencio": {
+                    "tarifa": 70000
+                },
+                "Acacias": {
+                    "tarifa": 129800
+                },
+                "Restrepo": {
+                    "tarifa": 114400
+                }
+            }
+        },
+        "Norte de Santander": {
+            "municipios": {
+                "Cucuta": {
+                    "tarifa": 70000
+                },
+                "El Zulia": {
+                    "tarifa": 96800
+                },
+                "Los Patios": {
+                    "tarifa": 85800
+                },
+                "San Cayetano": {
+                    "tarifa": 91300
+                },
+                "Villa Del Rosario": {
+                    "tarifa": 88000
+                }
+            }
+        },
+        "Quindío": {
+            "municipios": {
+                "Armenia QND": {
+                    "tarifa": 70000
+                },
+                "Calarcá": {
+                    "tarifa": 83600
+                },
+                "Circasia": {
+                    "tarifa": 93500
+                },
+                "La Tebaida": {
+                    "tarifa": 102300
+                },
+                "Montenegro": {
+                    "tarifa": 99000
+                },
+                "Quimbaya": {
+                    "tarifa": 97900
+                },
+                "Salento": {
+                    "tarifa": 115500
+                }
+            }
+        },
+        "Risaralda": {
+            "municipios": {
+                "Pereira": {
+                    "tarifa": 70000
+                },
+                "Dosquebradas": {
+                    "tarifa": 82500
+                },
+                "Marsella": {
+                    "tarifa": 97900
+                },
+                "Santa Rosa De Cabal": {
+                    "tarifa": 93500
+                }
+            }
+        },
+        "Santander": {
+            "municipios": {
+                "Bucaramanga": {
+                    "tarifa": 70000
+                },
+                "Floridablanca": {
+                    "tarifa": 90200
+                }
+            }
+        },
+        "Valle del Cauca": {
+            "municipios": {
+                "Cali": {
+                    "tarifa": 70000
+                },
+                "Candelaria": {
+                    "tarifa": 102300
+                },
+                "Florida": {
+                    "tarifa": 129800
+                },
+                "Guadalajara De Buga": {
+                    "tarifa": 165000
+                },
+                "Jamundí": {
+                    "tarifa": 85800
+                },
+                "La Cumbre": {
+                    "tarifa": 108900
+                },
+                "Palmira": {
+                    "tarifa": 102300
+                },
+                "Pradera": {
+                    "tarifa": 125400
+                },
+                "Yumbo": {
+                    "tarifa": 101200
+                }
+            }
+        },
+        "Visita Fallida": {
+            "municipios": {
+                "Toda la cobertura": {
+                    "tarifa": 37400
+                }
+            }
+        }
+    }
 }

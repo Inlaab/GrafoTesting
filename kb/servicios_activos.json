@@ -1,6 +1,34 @@
 {
-    "servicios": [
-        {"id": 1, "estado": "Pendiente"},
-        {"id": 2, "estado": "Asignado"}
-    ]
+    "tipos_servicio": {
+        "Avalúo": {
+            "duracion_min_horas": 1,
+            "duracion_max_horas": 2,
+            "prioridad": 2
+        },
+        "Constructor": {
+            "duracion_min_horas": 1.5,
+            "duracion_max_horas": 2,
+            "prioridad": 2
+        },
+        "360°": {
+            "duracion_min_horas": 1.5,
+            "duracion_max_horas": 2,
+            "prioridad": 2
+        },
+        "BRP Inmobiliario": {
+            "duracion_min_horas": 1.5,
+            "duracion_max_horas": 2,
+            "prioridad": 2
+        },
+        "BRP Saneamiento": {
+            "duracion_min_horas": 1.5,
+            "duracion_max_horas": 2,
+            "prioridad": 2
+        },
+        "Trámite": {
+            "duracion_min_horas": 1,
+            "duracion_max_horas": 1.5,
+            "prioridad": 3
+        }
+    }
 }

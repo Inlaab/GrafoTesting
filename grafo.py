@@ -3,45 +3,100 @@ import json
 class Grafo:
     def __init__(self):
         self.nodos = {}
-        self.aristas = []
+        self.aristas = {}
         self.cargar_todos_los_datos()
 
-    def cargar_datos(self, archivo, tipo):
-        with open(archivo, 'r') as f:
-            datos = json.load(f)
-            if tipo in self.nodos:
-                if isinstance(self.nodos[tipo], list) and isinstance(datos, list):
-                    self.nodos[tipo].extend(datos)
-                elif isinstance(self.nodos[tipo], dict) and isinstance(datos, dict):
-                    self.nodos[tipo].update(datos)
+    def cargar_datos(self, filepath, key):
+        try:
+            with open(filepath, 'r', encoding='utf-8') as file:
+                datos = json.load(file)
+                # Diccionario de transformaciones por tipo
+                transformaciones = {
+                    'Servicios': lambda x: x['tipos_servicio'],
+                    'Ubicaciones': lambda x: x['regiones'],
+                    'default': lambda x: x
+                }
+                # Aplicar transformación según key o usar default
+                self.nodos[key] = transformaciones.get(key, transformaciones['default'])(datos)
+        except FileNotFoundError:
+            raise Exception(f"Archivo no encontrado: {filepath}")
+        except json.JSONDecodeError:
+            raise Exception(f"Error al decodificar JSON: {filepath}")
+
+    def agregar_arista(self, desde, hasta, tipo, peso=1.0, funciones=None):
+        if funciones is None:
+            funciones = []
+        
+        arista = {
+            'desde': desde,
+            'hasta': hasta,
+            'tipo': tipo,
+            'peso': peso,
+            'funciones': funciones
+        }
+        
+        if desde not in self.aristas:
+            self.aristas[desde] = []
+        self.aristas[desde].append(arista)
+
+    def consultar(self, categoria, query_params):
+        """
+        Consulta genérica que acepta un diccionario de parámetros
+        """
+        try:
+            if categoria not in self.nodos:
+                return "Categoría no encontrada"
+                
+            datos = self.nodos[categoria]
+            resultado = datos
+            
+            for key in query_params:
+                if isinstance(resultado, dict):
+                    resultado = resultado.get(key, None)
                 else:
-                    raise ValueError("Los datos existentes y los nuevos datos deben ser del mismo tipo (lista o diccionario).")
-            else:
-                self.nodos[tipo] = datos
+                    return "Ruta de consulta inválida"
+                    
+            return resultado if resultado is not None else "No se encontraron datos"
+                
+        except Exception as e:
+            return f"Error en consulta: {str(e)}"
 
-    def cargar_aristas(self, aristas):
-        if isinstance(aristas, list):
-            self.aristas.extend(aristas)
-        else:
-            raise ValueError("Las aristas deben ser una lista.")
+    def obtener_estructura(self):
+        """
+        Retorna un diccionario con la estructura completa del grafo
+        para que el LLM pueda procesarla
+        """
+        return {
+            'nodos': self.nodos,
+            'aristas': self.aristas
+        }
 
-    def mostrar_grafo(self):
-        print("Nodos:")
-        for tipo, nodos in self.nodos.items():
-            print(f"{tipo}: {nodos}")
-        print("Aristas:")
-        for arista in self.aristas:
-            print(arista)
+    def obtener_contexto(self, categoria):
+        """
+        Retorna toda la información relacionada a una categoría,
+        incluyendo sus aristas
+        """
+        return {
+            'datos': self.nodos.get(categoria, {}),
+            'conexiones': self.aristas.get(categoria, [])
+        }
 
     def cargar_todos_los_datos(self):
-        # Cargar datos de nodos desde archivos JSON
-        self.cargar_datos('kb/servicios_activos.json', 'Servicios')
-        self.cargar_datos('kb/consultores_activos.json', 'Consultores')
-        self.cargar_datos('kb/ubicaciones_geo.json', 'Ubicaciones')
-        self.cargar_datos('kb/franjas_horarias.json', 'Franjas_Horarias')
-        self.cargar_datos('kb/matriz_distancias.json', 'Distancias')
-        self.cargar_datos('kb/tarifas_servicios.json', 'Tarifas')
-        self.cargar_datos('kb/capacidad_operativa.json', 'Capacidad')
+        """
+        Carga datos usando un diccionario de configuración
+        """
+        config_archivos = {
+            'Servicios': 'kb/servicios_activos.json',
+            'Consultores': 'kb/consultores_activos.json',
+            'Ubicaciones': 'kb/ubicaciones_geo.json',
+            'Franjas_Horarias': 'kb/franjas_horarias.json',
+            'Distancias': 'kb/matriz_distancias.json',
+            'Tarifas': 'kb/tarifas_servicios.json',
+            'Capacidad': 'kb/capacidad_operativa.json'
+        }
+        
+        for key, filepath in config_archivos.items():
+            self.cargar_datos(filepath, key)
 
         # Definir las aristas del grafo
         aristas = [
@@ -52,39 +107,27 @@ class Grafo:
             {'desde': 'Distancias', 'hasta': 'Tarifas', 'tipo': 'factor', 'peso': 1.0, 'funciones': ['Cálculo']},
             {'desde': 'Capacidad', 'hasta': 'Consultores', 'tipo': 'limite', 'peso': 1.0, 'funciones': ['Validación']}
         ]
-        self.cargar_aristas(aristas)
-
-    def consultar_disponibilidad(self, ubicacion):
-        try:
-            # Verificar si la ubicación existe
-            ubicacion_obj = next((u for u in self.nodos.get('Ubicaciones', []) if u['municipio'] == ubicacion), None)
-            if not ubicacion_obj:
-                raise ValueError(f"Ubicación {ubicacion} no encontrada")
-
-            # Obtener la clasificación de la ubicación
-            clasificacion = ubicacion_obj['prioridad']
-
-            # Filtrar los consultores activos para esa zona y validar franjas horarias y capacidad operativa
-            consultores_disponibles = [
-                c for c in self.nodos.get('Consultores', [])
-                if c['zona'] == clasificacion and c['activo'] and self.validar_franja_horaria(c) and self.validar_capacidad_operativa(c)
-            ]
-
-            return consultores_disponibles
-
-        except Exception as e:
-            print(f"Error al consultar disponibilidad: {str(e)}")
-            return []
-
-    def validar_franja_horaria(self, consultor):
-        # Implementar la lógica para validar la franja horaria del consultor
-        return True
-
-    def validar_capacidad_operativa(self, consultor):
-        # Implementar la lógica para validar la capacidad operativa del consultor
-        return True
+        for arista in aristas:
+            self.agregar_arista(arista['desde'], arista['hasta'], arista['tipo'], arista['peso'], arista['funciones'])
 
 if __name__ == "__main__":
     grafo = Grafo()
-    consultores = grafo.consultar_disponibilidad("Chía")
-    print("Consultores disponibles:", consultores)
+    # Ejemplo de uso
+    grafo.cargar_datos('E:\\GitHub\\GrafoTesting\\kb\\servicios_activos.json', 'Servicios')
+    grafo.cargar_datos('E:\\GitHub\\GrafoTesting\\kb\\ubicaciones_geo.json', 'Ubicaciones')
+
+    # Agregar aristas de ejemplo
+    grafo.agregar_arista('Servicios', 'Consultores', 'asignacion', 1.0, ['Procesamiento'])
+    grafo.agregar_arista('Bogotá', 'Soacha', 'ruta', 10)
+    grafo.agregar_arista('Bogotá', 'Calle 13', 'ruta', 5)
+
+    # Obtener estructura completa
+    estructura = grafo.obtener_estructura()
+    print(estructura)
+
+    # Obtener contexto de una categoría
+    contexto_servicios = grafo.obtener_contexto('Servicios')
+    print(contexto_servicios)
+
+    contexto_ubicaciones = grafo.obtener_contexto('Ubicaciones')
+    print(contexto_ubicaciones)
