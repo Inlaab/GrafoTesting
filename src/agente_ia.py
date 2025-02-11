@@ -8,6 +8,7 @@ class AgenteIA:
         :param grafo: Instancia de la clase Grafo.
         """
         self.grafo = grafo
+        self.contexto = {}
 
     # ANÁLISIS DE PROXIMIDAD REAL
     def calcular_distancia(self, origen, destino):
@@ -376,3 +377,69 @@ class AgenteIA:
         :return: Mensaje modificado.
         """
         return mensaje.replace("Voy a consultar", "consultando información...")
+
+    # NUEVAS FUNCIONES
+    def procesar_consulta(self, consulta):
+        """
+        Procesa consultas en lenguaje natural y retorna respuestas formateadas
+        
+        :param consulta: String con la consulta del usuario
+        :return: Respuesta formateada
+        """
+        consulta = consulta.lower()
+        
+        if "servicios activos" in consulta:
+            servicios = self.grafo.nodos["Servicios"]
+            return self._formatear_respuesta_servicios(servicios)
+        
+        return "Consulta no reconocida."
+
+    def _formatear_respuesta_servicios(self, servicios):
+        """
+        Formatea la respuesta para la consulta de servicios activos
+        
+        :param servicios: Diccionario de servicios
+        :return: Respuesta formateada
+        """
+        respuesta = "Los servicios disponibles actualmente son:\n"
+        for servicio, datos in servicios.items():
+            estado = "✓ Activo" if datos.get("activo", False) else "✗ Inactivo"
+            respuesta += f"- {servicio}: {estado}\n"
+        return respuesta
+
+    def interactuar(self, consulta):
+        """
+        Método principal para interactuar con el usuario.
+        
+        :param consulta: String con la consulta del usuario.
+        :return: Respuesta en lenguaje natural.
+        """
+        consulta = consulta.lower()
+        
+        if "servicio" in consulta:
+            if "asignar" in consulta:
+                # Asignar servicio a consultor
+                servicio_id = self.extraer_id(consulta)
+                if servicio_id:
+                    consultor_id = self.asignar_servicio_a_consultor(servicio_id)
+                    if consultor_id:
+                        return f"El servicio {servicio_id} ha sido asignado al consultor {consultor_id}."
+                    else:
+                        return "No hay consultores disponibles para asignar este servicio."
+                else:
+                    return "No se pudo identificar el ID del servicio."
+            elif "consultar" in consulta:
+                # Consultar servicios activos
+                return self.procesar_consulta("servicios activos")
+        
+        return "Lo siento, no entiendo la consulta."
+
+    def extraer_id(self, consulta):
+        """
+        Extrae el ID de un servicio o consultor de la consulta.
+        
+        :param consulta: String con la consulta del usuario.
+        :return: ID extraído o None si no se encuentra.
+        """
+        # Implementar lógica para extraer ID de la consulta
+        pass
