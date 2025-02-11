@@ -1,4 +1,5 @@
 import json
+import os
 
 class Grafo:
     def __init__(self):
@@ -8,7 +9,7 @@ class Grafo:
 
     def cargar_datos(self, filepath, key):
         try:
-            with open(filepath, 'r', encoding='utf-8') as file:
+            with open(filepath, 'r', encoding='utf-8-sig') as file:
                 datos = json.load(file)
                 # Diccionario de transformaciones por tipo
                 transformaciones = {
@@ -39,27 +40,33 @@ class Grafo:
             self.aristas[desde] = []
         self.aristas[desde].append(arista)
 
-    def consultar(self, categoria, query_params):
+    def consultar(self, categoria, filtro=None):
         """
-        Consulta genérica que acepta un diccionario de parámetros
+        Consulta datos de una categoría con filtro opcional
         """
         try:
             if categoria not in self.nodos:
                 return "Categoría no encontrada"
                 
-            datos = self.nodos[categoria]
-            resultado = datos
-            
-            for key in query_params:
-                if isinstance(resultado, dict):
-                    resultado = resultado.get(key, None)
-                else:
-                    return "Ruta de consulta inválida"
-                    
-            return resultado if resultado is not None else "No se encontraron datos"
+            if filtro is None:
+                return self.format_output(self.nodos[categoria])
                 
+            if categoria == "Servicios":
+                if "tipo" in filtro:
+                    servicio = self.nodos[categoria].get(filtro["tipo"])
+                    if servicio:
+                        return self.format_output(servicio)
+                    return "Servicio no encontrado"
+            
+            return "Filtro no válido"
         except Exception as e:
             return f"Error en consulta: {str(e)}"
+
+    def format_output(self, data):
+        """Formatea la salida para mejor legibilidad"""
+        if isinstance(data, dict):
+            return json.dumps(data, indent=2, ensure_ascii=False)
+        return data
 
     def obtener_estructura(self):
         """
@@ -85,14 +92,15 @@ class Grafo:
         """
         Carga datos usando un diccionario de configuración
         """
+        base_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'kb')
         config_archivos = {
-            'Servicios': 'kb/servicios_activos.json',
-            'Consultores': 'kb/consultores_activos.json',
-            'Ubicaciones': 'kb/ubicaciones_geo.json',
-            'Franjas_Horarias': 'kb/franjas_horarias.json',
-            'Distancias': 'kb/matriz_distancias.json',
-            'Tarifas': 'kb/tarifas_servicios.json',
-            'Capacidad': 'kb/capacidad_operativa.json'
+            'Servicios': os.path.join(base_path, 'servicios_activos.json'),
+            'Consultores': os.path.join(base_path, 'consultores_activos.json'),
+            'Ubicaciones': os.path.join(base_path, 'ubicaciones_geo.json'),
+            'Franjas_Horarias': os.path.join(base_path, 'franjas_horarias.json'),
+            'Distancias': os.path.join(base_path, 'matriz_distancias.json'),
+            'Tarifas': os.path.join(base_path, 'tarifas_servicios.json'),
+            'Capacidad': os.path.join(base_path, 'capacidad_operativa.json')
         }
         
         for key, filepath in config_archivos.items():
@@ -123,11 +131,11 @@ if __name__ == "__main__":
 
     # Obtener estructura completa
     estructura = grafo.obtener_estructura()
-    print(estructura)
+    print(grafo.format_output(estructura))
 
     # Obtener contexto de una categoría
     contexto_servicios = grafo.obtener_contexto('Servicios')
-    print(contexto_servicios)
+    print(grafo.format_output(contexto_servicios))
 
     contexto_ubicaciones = grafo.obtener_contexto('Ubicaciones')
-    print(contexto_ubicaciones)
+    print(grafo.format_output(contexto_ubicaciones))

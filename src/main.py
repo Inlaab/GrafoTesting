@@ -12,7 +12,16 @@ def main():
     grafo = Grafo()
     
     # Mostrar la estructura del grafo (nodos y aristas)
-    grafo.mostrar_grafo()
+    print("\n=== ESTRUCTURA COMPLETA DEL GRAFO ===")
+    print(grafo.obtener_estructura())
+    
+    # Pruebas de consulta
+    print("\n=== PRUEBAS DE CONSULTA ===")
+    print("\nTodos los servicios:")
+    print(grafo.consultar("Servicios"))
+    
+    print("\nConsulta específica - Servicio Avalúo:")
+    print(grafo.consultar("Servicios", {"tipo": "Avalúo"}))
     
     # Crear una instancia del Agente IA y pasarle el grafo
     agente = AgenteIA(grafo)
