@@ -477,31 +477,22 @@ class AgenteIA:
             respuesta += f"- {servicio}: {estado}\n"
         return respuesta
 
-    def interactuar(self, consulta):
-        """
-        Método principal para interactuar con el usuario.
-        
-        :param consulta: String con la consulta del usuario.
-        :return: Respuesta en lenguaje natural.
-        """
+def interactuar(self, consulta):
         consulta = consulta.lower()
-        
-        if "servicio" in consulta:
-            if "asignar" in consulta:
-                # Asignar servicio a consultor
+        if "servicio" en consulta:
+            if "asignar" en consulta:
                 servicio_id = self.extraer_id(consulta)
                 if servicio_id:
                     consultor_id = self.asignar_servicio_a_consultor(servicio_id)
                     if consultor_id:
-                        return f"El servicio {servicio_id} ha sido asignado al consultor {consultor_id}."
+                        return f"¡Listo! El servicio {servicio_id} ha sido asignado al consultor {consultor_id}."
                     else:
-                        return "No hay consultores disponibles para asignar este servicio."
+                        return "Lo siento, no hay consultores disponibles en este momento."
                 else:
-                    return "No se pudo identificar el ID del servicio."
-            elif "consultar" in consulta:
-                # Consultar servicios activos
+                    return "No pude identificar el ID del servicio. ¿Podrías verificarlo?"
+            elif "consultar" en consulta:
                 return self.procesar_consulta("servicios activos")
-        
+        return "Lo siento, no entendí tu consulta. ¿Podrías reformularla?"        
         return "Lo siento, no entiendo la consulta."
 
     def extraer_id(self, consulta):
