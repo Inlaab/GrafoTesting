@@ -1,3 +1,16 @@
+def validar_cobertura(self, direccion):
+    """
+    Valida si una dirección está dentro de la cobertura
+    
+    :param direccion: Dirección a validar
+    :return: True si está en cobertura, False si no
+    """
+    try:
+        ubicaciones = self.nodos['Ubicaciones']
+        # Implementar lógica de validación de cobertura
+        return True  # Por ahora siempre retorna True
+    except:
+        return False
 import json
 import os
 

@@ -1,3 +1,73 @@
+def interactuar(self, consulta):
+    """
+    Método principal para interactuar con el usuario.
+    
+    :param consulta: String con la consulta del usuario.
+    :return: Respuesta en lenguaje natural.
+    """
+    try:
+        consulta = consulta.lower()
+        
+        # Extraer información de la consulta
+        datos = self._extraer_datos_servicio(consulta)
+        
+        if "servicio" in consulta:
+            if datos:
+                # Validar horario
+                if not self._validar_horario(datos['fecha'], datos['hora']):
+                    return "Lo siento, ese horario no está disponible. ¿Te gustaría que te sugiera otros horarios cercanos?"
+                
+                # Validar cobertura
+                if not self._validar_cobertura(datos['direccion']):
+                    return "Disculpa, esa zona no está dentro de nuestra área de cobertura actual. ¿Necesitas el servicio en otra dirección?"
+                
+                # Asignar consultor
+                consultor = self._asignar_consultor(datos)
+                if not consultor:
+                    return "En este momento no tenemos consultores disponibles para ese horario. ¿Te gustaría programarlo para otro momento?"
+                
+                # Generar respuesta
+                respuesta = f"Perfecto, he agendado tu servicio para el {datos['fecha']} a las {datos['hora']} en {datos['direccion']}."
+                
+                # Agregar información de costos solo si el consultor es a destajo
+                if self.diferenciacion_tipo_consultor(consultor['id']) == 'destajo':
+                    costo = self._calcular_costo_servicio(datos)
+                    respuesta += f"\nValor a pagar al consultor: ${costo:,}"
+                
+                return respuesta
+            
+            return "Por favor, indícame la fecha, hora y dirección para el servicio."
+            
+        elif "cotizar" in consulta:
+            return self._procesar_cotizacion(consulta)
+            
+        return "¿En qué puedo ayudarte? Puedo agendar servicios o realizar cotizaciones."
+        
+    except Exception as e:
+        return "Disculpa, tuve un problema procesando tu solicitud. ¿Podrías intentarlo nuevamente?"
+
+def _extraer_datos_servicio(self, consulta):
+    """
+    Extrae fecha, hora y dirección de la consulta
+    """
+    try:
+        # Implementar extracción usando regex o NLP
+        # Por ahora un ejemplo simple
+        import re
+        
+        fecha_match = re.search(r'(\d{1,2}/\d{1,2}/\d{4}|\d{1,2}\s+de\s+[a-zA-Z]+)', consulta)
+        hora_match = re.search(r'(\d{1,2}:\d{2}|\d{1,2}\s*(?:am|pm))', consulta)
+        direccion_match = re.search(r'(?:en|calle|carrera|avenida)\s+([^,\.]+)', consulta)
+        
+        if fecha_match and hora_match and direccion_match:
+            return {
+                'fecha': fecha_match.group(1),
+                'hora': hora_match.group(1),
+                'direccion': direccion_match.group(1).strip()
+            }
+        return None
+    except:
+        return None
 import math
 
 class AgenteIA:
